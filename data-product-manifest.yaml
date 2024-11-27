@@ -1,0 +1,247 @@
+jobId: "1192"
+jobName: quality_crqs_historical_dp-uni copy
+jobType: Source Aligned Data Product
+developerId: fb302eb3-31f0-4180-8dcd-ff6b2305ad54
+domain: sale
+alias: quality_crqs_historical_dp_transform_1
+discoveryPort:
+  name: quality_crqs_historical_dp-uni copy
+inputPorts:
+  - alias: quality_crqs_historical_dp_1
+    isDynamic: true
+    connection: Uni-Postgres-dont-use
+    tableName/query: select * from iceberg.quality_crqs_historical_dp limit 10
+    optional:
+      persistDataFrame: false
+      enableDataReconciliation: false
+      enforceSchema: false
+      dataSetUrn: urn:dv:dataset:020dda39-79bd-4438-a400-57201f73b35d
+    type: readPostGreSqlDbUsingJdbc
+productState:
+  isDynamic: true
+  alias: quality_crqs_historical_dp_transform_1
+  retentionVersions: ""
+  logicalSchema:
+    properties:
+      __op:
+        type: STRING
+        description: Operation type
+        sourceColumn: "-"
+        sourceTable: "-"
+      __deleted:
+        type: STRING
+        description: Deletion status
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_category_stop:
+        type: STRING
+        description: Category stop ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_applies:
+        type: STRING
+        description: Applies flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      cd_lot:
+        type: STRING
+        description: Lot code
+        sourceColumn: "-"
+        sourceTable: "-"
+      de_comment_quality:
+        type: STRING
+        description: Quality comment
+        sourceColumn: "-"
+        sourceTable: "-"
+      de_comentario_operador:
+        type: STRING
+        description: Operator comment
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_pqs_observation_old:
+        type: STRING
+        description: Old PQS observation ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      dt_modified:
+        type: DATETIME
+        description: Modification timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_ruta:
+        type: STRING
+        description: Route ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_loss:
+        type: STRING
+        description: Loss ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_shift:
+        type: STRING
+        description: Shift flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      dt_modified_busqueda:
+        type: STRING
+        description: Search modified timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      dt_created:
+        type: DATETIME
+        description: Creation timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_state:
+        type: STRING
+        description: State flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_created_flag:
+        type: STRING
+        description: Creation flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_po:
+        type: STRING
+        description: PO ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_SKU:
+        type: STRING
+        description: SKU ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_user:
+        type: STRING
+        description: User ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_shift_realised:
+        type: STRING
+        description: Shift realised flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_draft:
+        type: STRING
+        description: Draft flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_redo:
+        type: STRING
+        description: Redo flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_editing:
+        type: STRING
+        description: Editing flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      fe_made_real:
+        type: STRING
+        description: Made real timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      fe_made:
+        type: STRING
+        description: Made timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      fe_validation:
+        type: STRING
+        description: Validation timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_user_validated:
+        type: STRING
+        description: User validated ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_validated:
+        type: STRING
+        description: Validated flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      fl_foto:
+        type: STRING
+        description: Photo flag
+        sourceColumn: "-"
+        sourceTable: "-"
+      dt_scheduled:
+        type: STRING
+        description: Scheduled timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+      nm_version:
+        type: STRING
+        description: Version number
+        sourceColumn: "-"
+        sourceTable: "-"
+      nm_version_bu:
+        type: STRING
+        description: Business unit version number
+        sourceColumn: "-"
+        sourceTable: "-"
+      nm_version_bg:
+        type: STRING
+        description: Background version number
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_machine:
+        type: STRING
+        description: Machine ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_line:
+        type: STRING
+        description: Line ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_pqs:
+        type: STRING
+        description: PQS ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_pqs_observation:
+        type: STRING
+        description: PQS observation ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      id_factory:
+        type: STRING
+        description: Factory ID
+        sourceColumn: "-"
+        sourceTable: "-"
+      messageProducedTimestampAsField:
+        type: DATETIME
+        description: Produced message timestamp
+        sourceColumn: "-"
+        sourceTable: "-"
+  stateStoreType: loadDataIceberg
+  isProfilingEnabled: false
+  updateStrategy: Overwrite
+  tableName: s3source.quality_crqs_historical_dp_1
+  warehousePath: s3://bp-spark-sql-library-test-acc/
+  catalogName: glue
+  optional:
+    persistDataFrame: false
+    enableDataReconciliation: false
+    enforceSchema: false
+    enforceSchemaMethod: Warning
+    catalogType: glue
+  refreshInterval: None
+transformation:
+  - isDynamic: true
+    alias: Spark_SQL_1
+    description: quality_crqs_historical_dp
+    sequence: 2
+    inputDataFrameList:
+      - inputDataFrame: quality_crqs_historical_dp_1
+        tempViewName: quality_crqs_historical_dp
+    query: select * from quality_crqs_historical_dp
+    optional:
+      persistDataFrame: false
+    type: operationThroughSqlQuery
+controlPort:
+  dataQualityRules: {}
