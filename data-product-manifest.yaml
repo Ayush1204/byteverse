@@ -239,7 +239,14 @@ transformation:
     inputDataFrameList:
       - inputDataFrame: quality_crqs_historical_dp_1
         tempViewName: quality_crqs_historical_dp
-    query: select * from quality_crqs_historical_dp
+    query: select "messageProducedTimestampAsField", id_factory, id_pqs_observation,
+      id_pqs, id_line, id_machine, nm_version_bg, nm_version_bu, nm_version,
+      dt_scheduled, fl_foto, fl_validated, id_user_validated, fe_validation,
+      fe_made, fe_made_real, fl_editing, fl_redo, fl_draft, fl_shift_realised,
+      id_user, "id_SKU", id_po, fl_created_flag, fl_state, dt_created,
+      dt_modified_busqueda, fl_shift, id_loss, id_ruta, dt_modified,
+      de_comentario_operador, de_comment_quality, cd_lot, fl_applies,
+      id_category_stop, "__deleted", "__op" from quality_crqs_historical_dp
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
