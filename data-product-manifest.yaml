@@ -1,11 +1,11 @@
 jobId: "1192"
-jobName: quality_crqs_historical_dp-uni copy
+jobName: quality_crqs_historical_dp_uni_new
 jobType: Source Aligned Data Product
 developerId: fb302eb3-31f0-4180-8dcd-ff6b2305ad54
 domain: sale
 alias: quality_crqs_historical_dp_transform_1
 discoveryPort:
-  name: quality_crqs_historical_dp-uni copy
+  name: quality_crqs_historical_dp_uni_new
 inputPorts:
   - alias: quality_crqs_historical_dp_1
     isDynamic: true
