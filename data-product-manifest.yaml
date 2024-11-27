@@ -1,11 +1,11 @@
-jobId: "1187"
-jobName: quality_crqs_historical_dp-uni
+jobId: "1192"
+jobName: quality_crqs_historical_dp_uni_new
 jobType: Source Aligned Data Product
 developerId: fb302eb3-31f0-4180-8dcd-ff6b2305ad54
 domain: sale
-alias: quality_crqs_historical_dp_transform
+alias: quality_crqs_historical_dp_transform_1
 discoveryPort:
-  name: quality_crqs_historical_dp-uni
+  name: quality_crqs_historical_dp_uni_new
 inputPorts:
   - alias: quality_crqs_historical_dp_1
     isDynamic: true
@@ -19,7 +19,7 @@ inputPorts:
     type: readPostGreSqlDbUsingJdbc
 productState:
   isDynamic: true
-  alias: quality_crqs_historical_dp_transform
+  alias: quality_crqs_historical_dp_transform_1
   retentionVersions: ""
   logicalSchema:
     properties:
@@ -221,7 +221,7 @@ productState:
   stateStoreType: loadDataIceberg
   isProfilingEnabled: false
   updateStrategy: Overwrite
-  tableName: s3source.quality_crqs_historical_dp
+  tableName: s3source.quality_crqs_historical_dp_1
   warehousePath: s3://bp-spark-sql-library-test-acc/
   catalogName: glue
   optional:
@@ -239,7 +239,14 @@ transformation:
     inputDataFrameList:
       - inputDataFrame: quality_crqs_historical_dp_1
         tempViewName: quality_crqs_historical_dp
-    query: select * from quality_crqs_historical_dp
+    query: select "messageProducedTimestampAsField", id_factory, id_pqs_observation,
+      id_pqs, id_line, id_machine, nm_version_bg, nm_version_bu, nm_version,
+      dt_scheduled, fl_foto, fl_validated, id_user_validated, fe_validation,
+      fe_made, fe_made_real, fl_editing, fl_redo, fl_draft, fl_shift_realised,
+      id_user, "id_SKU", id_po, fl_created_flag, fl_state, dt_created,
+      dt_modified_busqueda, fl_shift, id_loss, id_ruta, dt_modified,
+      de_comentario_operador, de_comment_quality, cd_lot, fl_applies,
+      id_category_stop, "__deleted", "__op" from quality_crqs_historical_dp
     optional:
       persistDataFrame: false
     type: operationThroughSqlQuery
